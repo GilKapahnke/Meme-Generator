@@ -1,0 +1,114 @@
+* {
+  cursor: url(https://cur.cursors-4u.net/nature/nat-10/nat927.ani),
+    url(https://cur.cursors-4u.net/nature/nat-10/nat927.png), auto !important;
+}
+
+header {
+  margin: 0px;
+  padding: 0px;
+}
+
+header img {
+  border: black solid;
+}
+
+body {
+  background-color: #e6ec54;
+  display: inline-block;
+}
+
+main {
+  border: black solid;
+  height: 400px;
+  width: 400px;
+  float: left;
+  font-family: Arial, Helvetica, sans-serif;
+  background-size: 400px 400px;
+}
+
+main h1 {
+  text-align: center;
+  font-size: 25px;
+}
+
+#text_oben {
+  padding-top: 2%;
+  color: white;
+}
+
+#text_unten {
+  padding-top: 60%;
+  color: white;
+}
+
+section {
+  float: right;
+  border: black solid;
+  width: 60%;
+  height: 400px;
+}
+
+#bild_upload {
+  padding-left: 40%;
+  padding-top: 2%;
+}
+
+.einstellungen {
+  display: flex;
+  padding-left: 10%;
+  border-top: #000000 solid;
+  border-radius: 15px;
+  padding-top: 5px;
+}
+
+.einstellungen label {
+  font-size: 110%;
+  padding-left: 2%;
+}
+
+.text_eingabe {
+  padding-left: 40%;
+  border-bottom: #000000 solid;
+  border-radius: 15px;
+  padding-bottom: 5px;
+  font-size: 110%;
+}
+
+.foto_presets {
+  margin-top: 5%;
+}
+
+.foto_buttons:hover {
+  transform: scale(1.8);
+}
+
+.foto_buttons {
+  margin-left: 18%;
+  width: 50px;
+  height: 50px;
+  transition: transform 0.4s;
+}
+
+#pikachu {
+  background-image: url("pics/surprised_pikachu_face.png");
+  background-size: 50px 50px;
+  box-shadow: 0px 0px 10px 4px hsl(56, 100%, 38%);
+}
+
+#spongebob {
+  background-image: url("pics/spongebob_wallet.png");
+  background-size: 50px 50px;
+  box-shadow: 0px 0px 10px 4px #00ccff;
+}
+
+#mike {
+  background-image: url("pics/mike_monster_ag.png");
+  background-size: 50px 50px;
+  box-shadow: 0px 0px 7px 3px #229c0a;
+}
+
+#download_button {
+  margin-left: 40%;
+  font-size: 20px;
+  background-color: rgb(20, 221, 20);
+}

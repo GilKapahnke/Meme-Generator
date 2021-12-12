@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <!--Einbinden von 'Pasifico'-Schriftart-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <title>Gils Meme-Generator</title>
+    <script>
+      //Aktualisieren bzw. Anwenden der Einstellungen
+
+      function anwenden() {
+        //Variablendeklaration
+        var selectedValueSchriftart =
+          document.getElementById("schriftart").value;
+        var selectedValueSchriftfarbe =
+          document.getElementById("schriftfarbe").value;
+        var selectedValueSchriftgroesse =
+          document.getElementById("schriftgroesse").value;
+
+        document.getElementById("text_oben").innerHTML =
+          document.getElementById("text_oben_input").value;
+
+        document.getElementById("text_unten").innerHTML =
+          document.getElementById("text_unten_input").value;
+
+        //Schriftart Abfrage
+        if (selectedValueSchriftart == "comic") {
+          document.getElementById("text_oben").style.fontFamily = "comic";
+          document.getElementById("text_unten").style.fontFamily = "comic";
+        } else if (selectedValueSchriftart == "pacifico") {
+          document.getElementById("text_oben").style.fontFamily = "Pacifico";
+          document.getElementById("text_unten").style.fontFamily = "Pacifico";
+        } else {
+          document.getElementById("text_oben").style.fontFamily = "arial";
+          document.getElementById("text_unten").style.fontFamily = "arial";
+        }
+
+        //Schriftfarbe Abfrage
+        if (selectedValueSchriftfarbe == "schwarz") {
+          document.getElementById("text_oben").style.color = "black";
+          document.getElementById("text_unten").style.color = "black";
+        } else {
+          document.getElementById("text_oben").style.color = "white";
+          document.getElementById("text_unten").style.color = "white";
+        }
+
+        //Schriftgroesse Abfrage
+        if (selectedValueSchriftgroesse == "30") {
+          document.getElementById("text_oben").style.fontSize = "30px";
+          document.getElementById("text_unten").style.fontSize = "30px";
+        } else if (selectedValueSchriftgroesse == "35") {
+          document.getElementById("text_oben").style.fontSize = "35px";
+          document.getElementById("text_unten").style.fontSize = "35px";
+        } else {
+          document.getElementById("text_oben").style.fontSize = "25px";
+          document.getElementById("text_unten").style.fontSize = "25px";
+        }
+      }
+
+      //Laden der Preset-Bilder
+      function loadPikachu() {
+        document.getElementById("main").style.backgroundImage =
+          "url('pics/surprised_pikachu_face.png')";
+      }
+
+      function loadSpongebob() {
+        document.getElementById("main").style.backgroundImage =
+          "url('pics/spongebob_wallet.png')";
+      }
+
+      function loadMike() {
+        document.getElementById("main").style.backgroundImage =
+          "url('pics/mike_monster_ag.png')";
+      }
+
+      function dateiEinlesen() {
+        var selected = document.getElementById("bild_upload").files[0]; // index Null, weil nur eine Datei akzeptiert werden soll
+        var reader = new FileReader();
+
+        reader.addEventListener("loadend", function () {
+          var pfad = reader.result;
+
+          document.getElementById("main").style.backgroundImage =
+            "url(" + pfad + ")";
+        });
+        reader.readAsDataURL(selected);
+        console.log(selected);
+      }
+    </script>
+  <body>
+    <header>
+      <img src="pics/Banner.png" alt="ook_les_go" width="auto" height="221" />
+    </header>
+
+      <main id="main">
+        <h1 id="text_oben"></h1>
+        <h1 id="text_unten"></h1>
+      </main>
+
+    <section>
+      <input
+        id="bild_upload"
+        type="file"
+        value="Waehle Datei"
+        accept="image/*"
+        onchange="dateiEinlesen()"
+      />
+      <br />
+      <br />
+
+      <div class="einstellungen">
+        <label>Schriftart:</label><br />
+        <select
+          name="auswahl_schriftart"
+          id="schriftart"
+          onchange="getSelectedValueSchriftart()"
+        >
+          <option value="arial">Arial</option>
+          <option value="comic">Comic Sans</option>
+          <option value="pacifico">Pacifico</option>
+        </select>
+        <br />
+
+        <label>Schriftfarbe:</label><br />
+        <select
+          name="auswahl_schriftfarbe"
+          id="schriftfarbe"
+          onchange="getSelectedValueSchriftfarbe()"
+        >
+          <option value="weiss">Weiß</option>
+          <option value="schwarz">Schwarz</option>
+        </select>
+        <br />
+
+        <label>Schriftgröße:</label><br />
+        <select
+          name="auswahl_schriftgroesse"
+          id="schriftgroesse"
+          onchange="getSelectedValueSchriftgroesse()"
+        >
+          <option value="25">25</option>
+          <option value="30">30</option>
+          <option value="35">35</option>
+        </select>
+      </div>
+      <br />
+      <br />
+
+      <div class="text_eingabe">
+        <label>Text Oben:</label><br />
+        <input type="text" id="text_oben_input" />
+        <br />
+
+        <label>Text Unten:</label><br />
+        <input type="text" id="text_unten_input" />
+        <button onclick="anwenden()">Anwenden</button>
+      </div>
+
+      <div class="foto_presets">
+        <button
+          onclick="loadPikachu()"
+          id="pikachu"
+          class="foto_buttons"
+        ></button>
+        <button
+          onclick="loadSpongebob()"
+          id="spongebob"
+          class="foto_buttons"
+        ></button>
+        <button onclick="loadMike()" id="mike" class="foto_buttons"></button>
+      </div>
+
+      <br />
+      <br />
+      <button id="download_button" onClick="download()">Runterladen</button>
+    </section>
+
+    <!--Einfuegen von html2canvas library-->
+    <script src="html2canvas.js"></script>
+    <script>
+      document.querySelector('#download_button').addEventListener('click', function() {
+        html2canvas(document.getElementById("main", {allowTaint: true,
+    foreignObjectRendering: true, useCORS:true})).then(canvas => {
+          document.body.appendChild(canvas);
+          var b64 = canvas.toDataURL("image/png");
+        });
+    });
+  </script>
+  </body>
+</html>
